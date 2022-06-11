@@ -32,38 +32,53 @@ window.onload=function(){
     }
 }
 ?>
-<div class="row">
-<!--	<div class="col-xs-12 col-sm-12 col-md-2">
-		  	<?php
-//			include_once 'sidebar.php';
-			?>
-	</div>-->
-	<div class="col-xs-12 col-sm-12 col-md-12">
-	<ol class="breadcrumb">
-	  <li><a href="index.php"><span class="fa fa-home"></span> Beranda</a></li>
-	  <li class="active"><span class="fa fa-user"></span> Profil</li>
-	</ol>
-		  	<p style="margin-bottom:10px;">
-		  		<strong style="font-size:18pt;"><span class="fa fa-pencil"></span> Ubah Profil</strong>
-		  	</p>
-                <form method="post">
-                  <div class="form-group">
-                    <label for="nl">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="nl" name="nl" value="<?php echo $eks->nl; ?>" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="un">Username</label>
-                    <input type="text" class="form-control" id="un" name="un" value="<?php echo $eks->un; ?>" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="pw">Password</label>
-                    <input type="text" class="form-control" id="pw" name="pw" value="<?php echo $eks->pw; ?>" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary"><span class="fa fa-edit"></span> Ubah</button>
-                </form>
-              
-          </div>
+<div class="bg-gray-100 px-5 py-5 rounded-xl">
+    <div class="flex flex-col">
+        <div class="flex flex-row font-bold text-3xl text-primary-800">
+            <a href="main.php">Beranda/ </a><a href="data-kriteria.php">Tambah Data Kriteria</a>
         </div>
-        <?php
-include_once 'footer.php';
-?>
+        <div class="w-full h-2 bg-secondary-300 rounded-xl my-2"></div>
+        <div class="flex w-full justify-center">
+        <form class="w-full " method="post">
+					<div class="flex items-center mb-6">
+						<div class="w-1/5">
+							<label  class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+								Nama Lengkap
+							</label>
+						</div>
+						<div class="w-4/5">
+							<input type="text" id="nl" name="nl" value="<?php echo $eks->nl; ?>" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  required>
+						</div>
+					</div>
+					<div class="flex items-center mb-6">
+						<div class="w-1/5">
+							<label  class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+								Username
+							</label>
+						</div>
+						<div class="w-4/5">
+							<input id="un" name="un" value="<?php echo $eks->un; ?>"  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" required>
+						</div>
+					</div>
+          <div class="flex items-center mb-6">
+						<div class="w-1/5">
+							<label  class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+								Password
+							</label>
+						</div>
+						<div class="w-4/5">
+							<input id="pw" name="pw" value="<?php echo $eks->pw; ?>" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="password" required>
+						</div>
+					</div>
+					<div class="flex ">
+						<button type="reset" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" >
+							Batal
+						</button>
+						<button type="submit" class="ml-2 shadow bg-primary-500 hover:bg-primary-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+							Simpan Data
+						</button>
+					</div>
+				</form>
+		</div>
+    </div>
+</div>

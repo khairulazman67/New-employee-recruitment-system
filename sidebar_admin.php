@@ -8,7 +8,12 @@
 						<i class="fa fa-home" aria-hidden="true"></i> Beranda
 					</div>
 				</a>
-				<a href="nilai.php">
+				<a href="main.php">
+					<div   class="bg-primary-500 hover:bg-primary-600 w-full text-left mt-2 pl-4 py-2 rounded-xl font-bold text-xl text-white">
+					<i class="fa fa-paper-plane" aria-hidden="true"></i> Halaman Utama
+					</div>
+				</a>
+				<a href="nilai.php"> 
 					<div   class="bg-primary-500 hover:bg-primary-600 w-full text-left mt-2 pl-4 py-2 rounded-xl font-bold text-xl text-white">
 						<i class="fa fa-calculator" aria-hidden="true"></i> Data Nilai
 					</div>
@@ -16,6 +21,11 @@
 				<a href="user.php">
 					<div   class="bg-primary-500 hover:bg-primary-600 w-full text-left mt-2 pl-4 py-2 rounded-xl font-bold text-xl text-white">
 						<i class="fa fa-users" aria-hidden="true"></i> Pengguna
+					</div>
+				</a>
+				<a href="profil_admin.php">
+					<div   class="bg-primary-500 hover:bg-primary-600 w-full text-left mt-2 pl-4 py-2 rounded-xl font-bold text-xl text-white">
+						<i class="fa fa-key" aria-hidden="true"></i> Profil
 					</div>
 				</a>
 				<a href="logout.php">

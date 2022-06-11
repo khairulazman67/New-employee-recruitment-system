@@ -29,46 +29,48 @@ window.onload=function(){
 	}
 }
 ?>
-		<div class="row">
-<!--		  <div class="col-xs-12 col-sm-12 col-md-2">
-		  <?php
-//			include_once 'sidebar.php';
-			?>
-		  </div>-->
-		  <div class="col-xs-12 col-sm-12 col-md-12">
-		  <ol class="breadcrumb">
-			  <li><a href="index.php"><span class="fa fa-home"></span> Beranda</a></li>
-			  <li><a href="data-alternatif.php"><span class="fa fa-book"></span> Data Jurusan</a></li>
-			  <li class="active"><span class="fa fa-clone"></span> Tambah Data</li>
-			</ol>
-		  	<p style="margin-bottom:10px;">
-		  		<strong style="font-size:18pt;"><span class="fa fa-clone"></span> Tambah Jurusan</strong>
-		  	</p>
-		  	<div class="panel panel-default">
-		<div class="panel-body">
-			
-			    <form method="post">
-				  <div class="form-group">
-				    <label for="kd">ID Jurusan</label>
-				    <select class="form-control" id="kd" name="kd">
-						<option>A1</option>
-						<option>A2</option>
-						<option>A3</option>
-						<!--<option>A4</option>
-						<option>A5</option>-->
-					</select>
-					<p class="text-muted">Input 3 ID Jurusan Anda, A1, A2, dan A3.</p>
-				  </div>
-				  <div class="form-group">
-				    <label for="kt">Nama Jurusan</label>
-				    <input type="text" class="form-control" id="nm" name="nm" required>
-				  </div>
-				  <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Simpan</button>
-				  <button type="button" onclick="location.href='data-alternatif.php'" class="btn btn-success"><span class="fa fa-history"></span> Kembali</button>
-				</form>
-			  
-		  </div></div></div>
+<div class="bg-gray-100 px-5 py-5 rounded-xl">
+    <div class="flex flex-col">
+        <div class="flex flex-row font-bold text-3xl text-primary-800">
+            <a href="main.php">Beranda/ </a><a href="data-kriteria.php">Tambah Data Alternatif</a>
+        </div>
+        <div class="w-full h-2 bg-secondary-300 rounded-xl my-2"></div>
+        <div class="flex w-full justify-center">
+			<form class="w-full " method="post">
+				<div class="flex items-center mb-6">
+					<div class="w-1/5">
+						<label  class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+							Id Data
+						</label>
+						
+					</div>
+					<div class="w-4/5">
+						<select class="block text-gray-500 font-bold text-left mb-1 py-2 pr-4 w-full" id="kd" name="kd">
+							<option value="A1">A1</option>
+							<option value="A2">A2</option>
+							<option value="A3">A3</option>
+						</select>
+					</div>
+				</div>
+				<div class="flex items-center mb-6">
+					<div class="w-1/5">
+						<label  class="block text-gray-500 font-bold text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
+							Nama Kriteria
+						</label>
+					</div>
+					<div class="w-4/5">
+						<input id="nm" name="nm"  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" required>
+					</div>
+				</div>
+				<div class="flex ">
+					<button type="reset" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" >
+						Batal
+					</button>
+					<button type="submit" class="ml-2 shadow bg-primary-500 hover:bg-primary-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+						Simpan Data
+					</button>
+				</div>
+			</form>
 		</div>
-		<?php
-include_once 'footer.php';
-?>
+    </div>
+</div>

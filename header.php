@@ -1,5 +1,6 @@
 <?php
 include "includes/config.php";
+
 session_start();
 if (!isset($_SESSION['nama_lengkap'])) {
     echo "<script>location.href='login.php'</script>";
@@ -7,95 +8,84 @@ if (!isset($_SESSION['nama_lengkap'])) {
 $config = new Config();
 $db = $config->getConnection();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Aplikasi SPK</title>
 
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
-        <link type="text/css" href="css/jquery.toastmessage.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
+    <title>Aplikasi SPK</title>
 
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" />
+    <link href="css/output.css" rel="stylesheet">
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+<body >
+
+    <div class="w-full  mt-5 px-5">
+        <div class=" flex h-14 flex-row justify-between  w-full bg-primary-700 rounded-2xl px-5 items-center">
+            <div class="flex  text-white font-semibold items-center">
+                <div class="text-xl">Sistem Pendukung Keputusan Penerimaan Karyawan Baru</div>
+                
+                <div class="dropdown inline-block relative ml-3 ">
+                    <button class="bg-primary-500 hover:bg-primary-600  font-semibold py-2 px-4 rounded inline-flex items-center">
+                        <span class="mr-1">Input Data </span>
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </button>
+                    <ul class="dropdown-menu absolute hidden  pt-1">
+                        <li class=""><a class="rounded-t bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="data-kriteria.php">Data Kriteria</a></li>
+                        <li class=""><a class="bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="data-alternatif.php">Data Alternatif</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown inline-block relative ml-3">
+                    <button class="bg-primary-500 hover:bg-primary-600  font-semibold py-2 px-4 rounded inline-flex items-center">
+                        <span class="mr-1">Analisis Data </span>
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu absolute hidden pt-1 ">
+                        <li class=""><a class="rounded-t bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="analisa-kriteria.php">Analisis Kriteria</a></li>
+                        <li class=""><a class="bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="analisa-alternatif.php">Analisis Alternatif</a></li>
+                        <li class=""><a class="rounded-b bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="rangking.php">Rangking</a></li>
+                        <!-- <li class=""><a class="rounded-b bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="#">Laporan</a></li> -->
+                    </ul>
+                </div>
+                <div class="inline-block relative ml-3">
+                    <a href="laporan-cetak.php">
+                        <div class="bg-primary-500 hover:bg-primary-600  font-semibold py-2 px-4 rounded inline-flex items-center">
+                            <span class="mr-1">Laporan</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class=" inset-y-0 right-0 flex flex-row items-center text-white">
+                <h1 class="text-white font-semibold"><?php echo $_SESSION['nama_lengkap'] ?></h1>
+                <div class="dropdown inline-block relative ml-3">
+                    <button class=" font-semibold hover:text-gray-300 py-2 px-4 rounded inline-flex items-center">
+                        <span class="mr-1 "><i class="fa fa-cog" aria-hidden="true"></i></span>
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu absolute hidden  pt-1">
+                        <li class=""><a class="rounded-t bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="profil.php">Profil</a></li>
+                        <li class=""><a class="bg-primary-500 hover:bg-primary-600 py-2 px-4 block whitespace-no-wrap" href="logout.php">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-                    <a class="navbar-brand" href="main.php">Sistem Pendukung Keputusan Pemilihan Fakultas UNIKI</a>
+       
+        <div class="flex flex-row gap-2 h-full mt-4">
+            
 
-                </div> 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-file "></i> Input Data <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <!-- <li role="presentation"><a href="nilai.php"><span class="fa fa-modx"></span> Data Nilai</a></li>-->
-                            <li role="presentation"><a href="data-kriteria.php"><span class="fa fa-bank"></span> Data Kriteria</a></li>
-                            <li role="presentation"><a href="data-alternatif.php"><span class="fa fa-book"></span> Data Alternatif Jurusan</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-file "></i> Analisis Data <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li role="presentation"><a href="analisa-kriteria.php"><span class="fa fa-bomb"></span> Analisis Kriteria</a></li>
-                            <li role="presentation"><a href="analisa-alternatif.php"><span class="fa fa-balance-scale"></span> Analisis Alternatif Jurusan</a></li>
-                            <li role="presentation"><a href="rangking.php"><span class="fa fa-bolt"></span> Rangking</a></li>
-                            <li role="presentation"><a href="laporan-cetak.php" target="_blank"><span class="fa fa-file-pdf-o"></span> Laporan</a></li>
-                        </ul>
-                    </li>
-<!--                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-file "></i> Admin Area <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li role="presentation"><a href="profil.php"><span class="fa fa-user"></span> Profil</a></li>
-                            <li role="presentation"><a href="user.php"><span class="fa fa-users"></span> Pengguna</a></li>
-                            <li role="presentation"><a href="logout.php"><span class="fa fa-sign-out"></span> Logout</a></li>
-                        </ul>
-                    </li>-->
-                </ul>
-    
-            <!-- Collect the nav links, forms, and other content for toggling -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!--<li><a href="https://www.facebook.com/ghazali.samudera"><span class="fa fa-facebook"></span></a></li>
-                    <li><a href="https://www.plus.google.com/+TGhazali"><span class="fa fa-google-plus"></span></a></li>
-                    <li><a href="https://www.twitter.com/tghazalipidie"><span class="fa fa-twitter"></span></a></li>
-                    <li><a href="https://www.youtube.com/?q=Code+Berkas"><span class="fa fa-youtube"></span></a></li> -->
-                    <li><a href=""><?php echo $_SESSION['nama_lengkap'] ?></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profil.php"><span class="fa fa-user"></span> Profil</a></li>
-                            <!-- <li><a href="user.php"><span class="fa fa-users"></span> Manejer Pengguna</a></li>-->
-                            <li role="separator" class="divider"></li>
-                            <li><a href="logout.php"><span class="fa fa-sign-out"></span> Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-
-    <div class="container-fluid">
+        </div>
+   
+   
+</body>
+        

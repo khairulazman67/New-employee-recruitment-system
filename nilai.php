@@ -37,13 +37,10 @@ if(isset($_POST['hapus-contengan'])){
     }
 }
 ?>
-<?php
-        include_once 'header_admin.php';
-    ?>
 <!-- content -->
 <div class="h-auto mt-5 mb-6 bg-gray-100 w-full rounded-2xl py-10 px-10">
 <div class="font-bold text-3xl text-primary-800">
-    Data Nilai
+    <a href="nilai.php">Data Nilai</a>
 </div>
 <div class="w-full h-2 rounded-xl bg-secondary-300 mt-2 mb-4"></div>
 <div class="flex flex-row justify-between">

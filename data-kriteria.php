@@ -37,77 +37,67 @@
         }
 }
 ?>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <br>
-        <br>
-        <br>
-        <ol class="breadcrumb">
-            <li><a href="main.php"><span class="fa fa-home"></span> Beranda</a></li>
-            <li class="active"><span class="fa fa-bank"></span> Data Kriteria</li>
-        </ol>
-        <form method="post">
-            <div class="row">
-                <div class="col-md-6 text-left">
-                    <strong style="font-size:18pt;"><span class="fa fa-bank"></span> Data Kriteria</strong>
-                </div>
-                <div class="col-md-6 text-right">
-                    <button type="submit" name="hapus-contengan" class="btn btn-danger"><span
-                            class="fa fa-close"></span> Hapus Contengan</button>
-
-                    <button type="button" onclick="location.href='data-kriteria-baru.php'" class="btn btn-primary"><span
-                            class="fa fa-clone"></span> Tambah Data</button>
-                </div>
+<div class="bg-gray-100 px-5 py-5 rounded-xl">
+    <div class="flex flex-col">
+        <div class="flex flex-row font-bold text-3xl text-primary-800">
+            <a href="main.php">Beranda/ </a><a href="data-kriteria.php"> Data Kriteria</a>
+        </div>
+        <div class="w-full h-2 bg-secondary-300 rounded-xl my-2"></div>
+        <a href="data-kriteria-baru.php">
+            <div class="bg-primary-500 hover:bg-primary-600 text-white rounded-xl  font-semibold py-2 px-4  inline-flex items-center">
+                <span >Tambah Data</span>
             </div>
-            <br />
-
-            <table width="100%" class="table table-striped table-bordered" id="tabeldata">
-                <thead>
-                    <tr>
-                        <th width="10px"><input type="checkbox" name="select-all" id="select-all" /></th>
-                        <th>ID Kriteria</th>
-                        <th>Nama Kriteria</th>
-                        <th>Bobot Kriteria</th>
-                        <th width="100px">Aksi</th>
-                    </tr>
-                </thead>
-
-                <tfoot>
-                    <tr>
-                        <th><input type="checkbox" name="select-all2" id="select-all2" /></th>
-                        <th>ID Kriteria</th>
-                        <th>Nama Kriteria</th>
-                        <th>Bobot Kriteria</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-
-                <tbody>
-                    <?php
-                        $no=1;
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                        ?>
-                        <tr>
-                            <td style="vertical-align:middle;"><input type="checkbox"
-                                    value="<?php echo $row['id_kriteria'] ?>" name="checkbox[]" /></td>
-                            <td style="vertical-align:middle;"><?php echo $row['id_kriteria'] ?></td>
-                            <td style="vertical-align:middle;"><?php echo $row['nama_kriteria'] ?></td>
-                            <td style="vertical-align:middle;"><?php echo $row['bobot_kriteria'] ?></td>
-                            <td style="text-align:center;vertical-align:middle;">
-                                <a href="data-kriteria-ubah.php?id=<?php echo $row['id_kriteria'] ?>"
-                                    class="btn btn-warning"><span class="glyphicon glyphicon-pencil"
-                                        aria-hidden="true"></span></a>
-                                <a href="data-kriteria-hapus.php?id=<?php echo $row['id_kriteria'] ?>"
-                                    onclick="return confirm('Yakin ingin menghapus data')" class="btn btn-danger"><span
-                                        class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                            </td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </form>
+        </a>
+        <table class="divide-y divide-gray-300 w-full mt-2" id="myTable">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-2 text-lg text-gray-500 ">
+                        ID Kriteria
+                    </th>
+                    <th class="px-6 py-2 text-lg  text-gray-500">
+                        Nama Kriteria
+                    </th>
+                    <th class="px-6 py-2 text-lg text-gray-500">
+                        Bobot Kriteria
+                    </th>
+                    <th class="px-6 py-2 text-lg text-gray-500">
+                        Aksi
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-300">
+            <?php
+                $no=1;
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            ?>
+                <tr class="whitespace-nowrap">
+                    <td class="px-6 py-4 text-center">
+                        <div class="text-lg text-gray-900">
+                            <?php echo $row['id_kriteria'] ?>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-lg text-gray-500">
+                            <?php echo $row['nama_kriteria'] ?>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <div class="text-lg text-gray-500">
+                            <?php echo $row['bobot_kriteria'] ?>
+                        </div>
+                    </td>
+                    <td class="flex flex-row justify-center text-center">
+                        <a href="data-kriteria-ubah.php?id=<?php echo $row['id_kriteria'] ?>" class="bg-yellow-300 mr-2 hover:bg-yellow-400 py-2 px-7 rounded-lg font-semibold">Edit</a>
+                        <a href="data-kriteria-hapus.php?id=<?php echo $row['id_kriteria'] ?>" onclick="return confirm('Yakin ingin menghapus data')" class="bg-red-500 text-white hover:bg-red-600 py-2 px-3 rounded-lg font-semibold">
+                            Hapus
+                        </a>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+            </tbody>
+        </table>
     </div>
     <center>
         <p>
@@ -115,6 +105,3 @@
         </p>
     </center>
 </div>
-<?php
-include_once 'footer.php';
-?>
